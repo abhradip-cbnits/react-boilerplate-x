@@ -164,8 +164,8 @@ function getCallback(callback) {
 const Skillset = () => {
     return(
         <>
-            <Row>
-                <Col span={24} className="pb-10">
+            <Row className="pt-5">
+                <Col span={24} className="pb-4">
                     <p className="body-font font-cookie text-5xl flex justify-center items-center">
                         Expertise
                     </p>

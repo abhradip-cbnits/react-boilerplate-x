@@ -6,8 +6,10 @@ import Projects from "../Projects/Projects";
 import GeneralInfo from "../GeneralInfo/GeneralInfo";
 import Companies from "../Companies/Companies";
 import Publications from "../Publications/Publications";
+import Contact from "../Contact/Contact";
 
 const Content = () => {
+
     return(
         <>
             <Introduction/>
@@ -17,6 +19,7 @@ const Content = () => {
             <Academics/>
             <Publications/>
             <GeneralInfo/>
+            <Contact/>
         </>
     )
 }
