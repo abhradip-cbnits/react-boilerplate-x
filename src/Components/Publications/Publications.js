@@ -1,12 +1,13 @@
 import React from "react";
 import {Row, Col} from "antd";
+import styles from "./index.module.css";
 
 const Publications = () => {
     return(
         <>
-        <Row>
-            <Col span={12} className="flex justify-center items-center">
-                <img src={'assets/Certification-bro.png'} style={{height:"450px"}} alt="publication-illustration"/>
+        <Row className="pt-32">
+            <Col span={12} className="flex justify-center">
+                <img src={'assets/Certification-bro.png'} className={styles.resize_image} alt="publication-illustration"/>
             </Col>
             <Col span={12} type="flex" style={{ alignItems: "center" }} justify="center" gutter={20} className="pr-14">
                 <Row>

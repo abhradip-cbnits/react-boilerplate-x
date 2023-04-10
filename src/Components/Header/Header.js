@@ -2,7 +2,6 @@ import React from "react";
 import { Button } from "antd";
 
 
-
 const Header = () => {
     return(
         <header className="flex-row w-full flex font-bold p-6 body-font font-ubuntu items-center">

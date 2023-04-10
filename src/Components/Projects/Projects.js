@@ -1,5 +1,6 @@
 import React from "react";
 import {Row, Col, Button} from "antd";
+import styles from "./index.module.css";
 
 
 const Projects = () => {
@@ -7,7 +8,7 @@ const Projects = () => {
         <>
             <Row>
                 <Col span={12} className="flex justify-center items-center">
-                    <img src={'assets/Source code-bro.png'} style={{height: "50%"}} alt="project-illustration"/>
+                    <img src={'assets/Source code-bro.png'} className={styles.resize_image} alt="project-illustration"/>
                 </Col>
                 <Col span={12} className="pr-14">
                     <Row>
