@@ -1,16 +1,18 @@
 import React from "react";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer"
-import Content from "../Content/Content";
+import {
+    Routes,
+    Route,
+  } from 'react-router-dom';
+import Home from "../../Pages/Home/Home";
+import Portfolio from "../../Pages/Portfolio/Portfolio";
 
 
 const Layout = () => {
     return (
-        <>
-            <Header/>
-            <Content/>
-            <Footer/>
-        </>
+        <Routes>
+            <Route exact path='/' element={< Home />}></Route>
+            <Route exact path='/portfolio' element={< Portfolio />}></Route>
+        </Routes>
     )
 }
 

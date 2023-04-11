@@ -1,9 +1,13 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import {Row, Col, Button} from "antd";
 import styles from "./index.module.css";
 
 
 const Projects = () => {
+
+    const navigate = useNavigate();
+
     return(
         <>
             <Row>
@@ -76,7 +80,7 @@ const Projects = () => {
                                 <p>To know more about my projects &nbsp; &nbsp;</p>
                             </span>
                             <span>
-                                <Button style={{fontFamily: "cookie", border: "2px solid black", borderRadius: "1px", fontSize: "20px", boxSizing: "initial"}}>Click here </Button>
+                                <Button onClick={()=> navigate("/portfolio")}  style={{fontFamily: "cookie", border: "2px solid black", borderRadius: "1px", fontSize: "20px", boxSizing: "initial"}}>Click here </Button>
                             </span>
                         </Col>
                     </Row>
