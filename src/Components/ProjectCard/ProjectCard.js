@@ -6,14 +6,13 @@ import styles from "./index.module.css";
 
 
 const ProjectCard = (props) => {
-    // console.log(props, "---");
     return (
         <>
             <Row>
                 {/* For project logo */}
                 <Col span={12} className="flex justify-center items-center">
                     <span className="flex justify-center items-center">
-                        <img src="/assets/knovva.png" alt="knovva-logo" className={styles.resize_image}/>
+                        <img src={`assets/${props.data?.projectLogo}`} alt="knovva-logo" className={styles.resize_image}/>
                     </span>
                 </Col>
 
@@ -52,9 +51,11 @@ const ProjectCard = (props) => {
                     {
                         props.data?.projectResponsibilities.map((responsibilty, index) => {
                             return (
-                                <Row>
+                                <Row key={index}>
                                     <Col span={24} className="pb-1 flex flex-row items-center">
-                                        <FontAwesomeIcon icon={faHandPointRight} style={{ height: "15px"}}/>
+                                        <span className="pr-4">
+                                            <FontAwesomeIcon icon={faHandPointRight} style={{ height: "15px"}}/>
+                                        </span>
                                         <span>
                                             <p className="body-font text-base font-courier" style={{textAlign: "justify"}}>
                                                {responsibilty}

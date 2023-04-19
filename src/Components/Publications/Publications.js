@@ -20,7 +20,7 @@ const Publications = () => {
                 <Row>
                     <Col span={24} className="p-4">
                         <span>
-                            <p className="body-font font-courier text-base" style={{textAlign: "justify"}}>Publications on Green Solutions: A Pilot Study on Green Technology and Green Computing</p>
+                            <p className="body-font font-courier text-lg" style={{textAlign: "justify"}}>Publications on Green Solutions: A Pilot Study on Green Technology and Green Computing</p>
                         </span>
                     </Col>
                 </Row>

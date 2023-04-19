@@ -6,7 +6,7 @@ import { faInstagram, faLinkedin, faFacebookSquare } from '@fortawesome/free-bra
 const Contact = () => {
     return (
         <>
-            <Row>
+            <Row id="contact-me">
                 <Col span={12} className="flex justify-center items-center">
                     <img src={'assets/Mailbox-bro.png'} alt="contact-illustration" style={{height: "80%"}}/>
                 </Col>

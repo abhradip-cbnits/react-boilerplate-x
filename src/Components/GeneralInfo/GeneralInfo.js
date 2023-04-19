@@ -25,7 +25,7 @@ const GeneralInfo = () => {
                         <Row>
                             <Col span={24}>
                                 <span>
-                                    <p className="body-font font-courier">English, Hindi, Bengali</p>
+                                    <p className="body-font font-courier text-base">English, Hindi, Bengali</p>
                                 </span>
                             </Col>
                         </Row>
@@ -43,7 +43,7 @@ const GeneralInfo = () => {
                         <Row>
                             <Col span={24}>
                                 <span>
-                                    <p className="body-font font-courier">Travelling, Cooking, Mythological Research</p>
+                                    <p className="body-font font-courier text-base">Travelling, Cooking, Mythological Research</p>
                                 </span>
                             </Col>
                         </Row>

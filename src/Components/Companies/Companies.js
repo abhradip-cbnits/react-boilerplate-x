@@ -20,7 +20,7 @@ const Companies = () => {
                             <Row>
                                 <Col span={24} className="pb-3">
                                     <span>
-                                        <p className="body-font font-courier text-base">CBNITS India Private Limited</p>
+                                        <p className="body-font font-courier text-lg">CBNITS India Private Limited</p>
                                     </span>
                                 </Col>
 
@@ -61,7 +61,7 @@ const Companies = () => {
                             <Row>
                                 <Col span={24} className="pb-3">
                                     <span>
-                                        <p className="body-font font-courier text-base">Branium Information Technologies Private Limited</p>
+                                        <p className="body-font font-courier text-lg">Branium Information Technologies Private Limited</p>
                                     </span>
                                 </Col>
 
@@ -101,7 +101,7 @@ const Companies = () => {
                             <Row>
                                 <Col span={24} className="pb-3">
                                     <span>
-                                        <p className="body-font font-courier text-base">IndustryPrime</p>
+                                        <p className="body-font font-courier text-lg">IndustryPrime</p>
                                     </span>
                                 </Col>
 

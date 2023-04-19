@@ -19,7 +19,7 @@ const Academics = () => {
                         <Row>
                            <Col span={24} className="pb-3">
                                 <span>
-                                    <p className="body-font font-courier text-base">Master of Science (M.Sc) in Computer Science, St. Xavier`s College, Kolkata, India</p>
+                                    <p className="body-font font-courier text-lg">Master of Science (M.Sc) in Computer Science, St. Xavier`s College, Kolkata, India</p>
                                 </span>
                            </Col>
 
@@ -72,7 +72,7 @@ const Academics = () => {
                         <Row>
                             <Col span={24} className="pb-3">
                                 <span>
-                                    <p className="body-font font-courier text-base">Bachelor of Science (B.Sc) in Computer Science, Ramakrishna Mission Vidyamandira, Belur Math, Howrah, India</p>
+                                    <p className="body-font font-courier text-lg">Bachelor of Science (B.Sc) in Computer Science, Ramakrishna Mission Vidyamandira, Belur Math, Howrah, India</p>
                                 </span>
                            </Col>
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
-import {Row, Col, Button} from "antd";
+import {Row, Col} from "antd";
 import styles from "./index.module.css";
 
 
@@ -31,7 +31,7 @@ const Projects = () => {
                             <Row className="pb-5">
                                 <Col span={24}>
                                     <span>
-                                        <p className="body-font font-courier text-base" style={{textAlign: "justify"}}>
+                                        <p className="body-font font-courier text-lg" style={{textAlign: "justify"}}>
                                             I have been working with Healthcare industries and it's corresponding huge range of
                                             product set for past 4 years. I have closedly worked on different phases e.g planning and buidling of
                                             product skeletons, core development, deployement and infrastructure maintenance for a dynamic range of
@@ -80,7 +80,7 @@ const Projects = () => {
                                 <p>To know more about my projects &nbsp; &nbsp;</p>
                             </span>
                             <span>
-                                <Button onClick={()=> navigate("/portfolio")}  style={{fontFamily: "cookie", border: "2px solid black", borderRadius: "1px", fontSize: "20px", boxSizing: "initial"}}>Click here </Button>
+                                <button className="hover:bg-black hover:text-white" onClick={()=> navigate("/portfolio")}  style={{fontFamily: "cookie", border: "2px solid black", borderRadius: "1px", fontSize: "20px", boxSizing: "initial", height: "40px", width: "90px"}}>Click here </button>
                             </span>
                         </Col>
                     </Row>
