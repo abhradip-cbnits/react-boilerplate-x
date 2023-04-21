@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Row, Col, Menu} from "antd";
 import {
     ProjectTwoTone,
@@ -9,6 +9,7 @@ import {
     PictureTwoTone
 
   } from '@ant-design/icons';
+import { DashboardContext } from "../../Contexts/DashboardContext";
 
 
 const getItem = (label, key, icon) => {
@@ -30,6 +31,18 @@ const items = [
 
 
 const DashboardSidebar = () => {
+
+    const { setActiveMenuItem } = useContext(DashboardContext);
+    const menuItems = ['Introduction', 'Companies', 'Projects', 'Education', 'Publication', 'Hobbies'];
+
+    const selectMenuItem = (key) => {
+        const menuItemObject ={
+            index: key,
+            value: menuItems[key-1]
+        }
+       setActiveMenuItem(menuItemObject);
+    }
+
     return (
         <div className="bg-white h-full">
             <Row>
@@ -50,6 +63,7 @@ const DashboardSidebar = () => {
                         mode="inline"
                         items={items}
                         style={{fontFamily: "Josefin Sans"}}
+                        onClick={(event)=> selectMenuItem(event.key)}
                     />
                 </Col>
             </Row>

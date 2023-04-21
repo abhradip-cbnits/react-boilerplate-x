@@ -1,16 +1,19 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Button, Card, Input} from "antd";
+import { DashboardContext } from "../../Contexts/DashboardContext";
 
 const { TextArea } = Input;
 const data = "Hi there, This is Abhradip Ghosh, an experienced Software Developer adept in bringing forth expertise in design, architect, develop, testing and maintenance of software systems. I am equipped with a diverse and promising skill-set. Specialized on MERN stack with experience of more than 6 years on the same domain. I am also having the working experience of Ruby on Rails domain and related tech stack. I have the proficiency in various platforms, languages, and embedded systems.";
 
 const DashboardBody = () => {
+    const { activeMenuItem } = useContext(DashboardContext);
+
     return (
         <>
             <div className="bg-white ml-4 mr-4 h-auto drop-shadow-lg flex flex-col">
                 <div className="flex p-4 w-full">
                     <span>
-                        <p className="body-font font-josefin-sans text-2xl" style={{color: "#1677ff"}}>Content Management - Introduction</p>
+                        <p className="body-font font-josefin-sans text-2xl" style={{color: "#1677ff"}}>Content Management - {activeMenuItem?.value}</p>
                     </span>
                 </div>
                 <div className="flex w-full">
