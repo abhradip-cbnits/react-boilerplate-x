@@ -19,6 +19,12 @@ const Header = () => {
         section.scrollIntoView( { behavior: 'smooth', block: 'start' } );
     }
 
+    const navigateToPortfolio = () => {
+        if (!window.location.href.includes("/portfolio")){
+            navigate('/portfolio');
+        }
+    }
+
     return(
         <header className="flex-row w-full flex font-bold p-6 body-font font-ubuntu items-center">
             <div className="flex justify-end w-full items-center">
@@ -29,7 +35,7 @@ const Header = () => {
                     <button onClick={() => scrollToContactSection()} style={{fontFamily: "cookie", border: "2px solid black", borderRadius: "1px", fontSize: "20px", boxSizing: "initial", height: "40px", width: "90px"}}>Contact</button>
                 </span>
                 <span>
-                    <button className="bg-black text-white" onClick={()=> navigate("/portfolio")}  style={{fontFamily: "cookie", border: "2px solid black", borderRadius: "1px", fontSize: "20px", boxSizing: "initial", height: "40px", width: "90px"}}>Portfolio</button>
+                    <button className="bg-black text-white" onClick={()=> navigateToPortfolio()}  style={{fontFamily: "cookie", border: "2px solid black", borderRadius: "1px", fontSize: "20px", boxSizing: "initial", height: "40px", width: "90px"}}>Portfolio</button>
                 </span>
             </div>
         </header>

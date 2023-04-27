@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row } from 'antd';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faLinkedin, faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
+import { faInstagram, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
 const Contact = () => {
     return (
@@ -69,13 +69,19 @@ const Contact = () => {
                                 </div>
                                 <div className="flex flex-row items-center">
                                     <span className="pr-4">
-                                        <FontAwesomeIcon icon={faInstagram} style={{ height: "30px" }}/>
+                                        <a className="hover:text-black" href="https://instagram.com/charleemagnee?igshid=ZDdkNTZiNTM=" target='_blank' rel="noreferrer">
+                                            <FontAwesomeIcon icon={faInstagram} style={{ height: "30px" }}/>
+                                        </a>
                                     </span>
                                     <span className="pr-4">
-                                        <FontAwesomeIcon icon={faLinkedin} style={{ height: "30px" }}/>
+                                        <a className="hover:text-black" href="https://www.linkedin.com/in/abhradip-ghosh-a47b90114" target='_blank' rel="noreferrer">
+                                            <FontAwesomeIcon icon={faLinkedin} style={{ height: "30px" }}/>
+                                        </a>
                                     </span>
                                     <span className="pr-4">
-                                        <FontAwesomeIcon icon={faFacebookSquare} style={{ height: "30px" }}/>
+                                        <a className="hover:text-black" href="https://wa.me/qr/GTKQJCGFSJEFP1" target='_blank' rel="noreferrer">
+                                            <FontAwesomeIcon icon={faWhatsapp} style={{ height: "30px" }}/>
+                                        </a>
                                     </span>
                                 </div>
                             </div>
