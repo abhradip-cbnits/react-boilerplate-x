@@ -44,7 +44,7 @@ const Projects = () => {
                             <Row className="pb-5">
                                 <Col span={24}>
                                     <span>
-                                        <p className="body-font font-courier text-base" style={{textAlign: "justify"}}>
+                                        <p className="body-font font-courier text-lg" style={{textAlign: "justify"}}>
                                             I have worked with Fintech companies to build and maintain products for regulated binary option trading.
                                         </p>
                                     </span>
@@ -54,7 +54,7 @@ const Projects = () => {
                             <Row className="pb-5">
                                 <Col span={24}>
                                     <span>
-                                        <p className="body-font font-courier text-base" style={{textAlign: "justify"}}>
+                                        <p className="body-font font-courier text-lg" style={{textAlign: "justify"}}>
                                             I have worked with Edtech giants to build their globally accessible and scable product for e-learning.
                                         </p>
                                     </span>
@@ -64,7 +64,7 @@ const Projects = () => {
                             <Row className="pb-5">
                                 <Col span={24}>
                                     <span>
-                                        <p className="body-font font-courier text-base" style={{textAlign: "justify"}}>
+                                        <p className="body-font font-courier text-lg" style={{textAlign: "justify"}}>
                                             I have developed the procurement solution from scratch for heavy engineering industries which is a SEM (Software Enabled Marketplace) in order
                                             to streamline the supply chain management.
                                         </p>
