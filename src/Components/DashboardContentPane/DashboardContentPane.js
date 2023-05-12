@@ -6,7 +6,6 @@ import DashboardBody from "../DashboardBody/DashboardBody";
 
 
 const DashboardContentPane = () => {
-
     return (
         <>
             <Row className="bg-gray-100 h-screen">

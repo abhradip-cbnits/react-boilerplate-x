@@ -24,8 +24,8 @@ const items = [
     getItem('Introduction', '1', <InfoCircleTwoTone />),
     getItem('Companies', '2', <IdcardTwoTone />),
     getItem('Projects', '3', <ProjectTwoTone />),
-    getItem('Education', '4', <ScheduleTwoTone />),
-    getItem('Publication', '5', <TrophyTwoTone />),
+    getItem('Portfolio', '4', <ScheduleTwoTone />),
+    getItem('Publications', '5', <TrophyTwoTone />),
     getItem('Hobbies', '6', <PictureTwoTone />)
   ];
 
@@ -33,7 +33,7 @@ const items = [
 const DashboardSidebar = () => {
 
     const { setActiveMenuItem } = useContext(DashboardContext);
-    const menuItems = ['Introduction', 'Companies', 'Projects', 'Education', 'Publication', 'Hobbies'];
+    const menuItems = ['Introduction', 'Companies', 'Projects', 'Portfolio', 'Publications', 'Hobbies'];
 
     const selectMenuItem = (key) => {
         const menuItemObject ={

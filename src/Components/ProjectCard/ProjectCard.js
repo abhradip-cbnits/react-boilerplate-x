@@ -2,8 +2,6 @@ import React from "react";
 import { Row, Col} from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandPointRight } from '@fortawesome/free-solid-svg-icons';
-// import styles from "./index.module.css";
-
 
 const ProjectCard = (props) => {
     return (

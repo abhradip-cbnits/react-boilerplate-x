@@ -4,10 +4,8 @@ import {Input} from "antd";
 import { useDispatch} from 'react-redux';
 import { doLogin } from '../../Redux/Features/user';
 import { unwrapResult } from '@reduxjs/toolkit';
-import Cookies from 'universal-cookie';
 import toast, {Toaster} from 'react-hot-toast';
 
-const cookies = new Cookies();
 
 const LoginModule = () => {
 
@@ -28,7 +26,9 @@ const LoginModule = () => {
         .then((unwrapResult))
         .then((result) => {
             if (result.status === 200){
-                cookies.set("jwt", result.headers['auth-token']);
+                localStorage.setItem("jwt", result.headers['auth-token']);
+                localStorage.setItem("loggedin", true);
+                localStorage.setItem("user", result.data?.data?.user);
                 toast.success('Logged in successfully');
                 navigate('/admin/dashboard');
             }

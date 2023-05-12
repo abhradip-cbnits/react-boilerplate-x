@@ -1,50 +1,147 @@
-import React, {useContext} from "react";
-import {Button, Card, Input} from "antd";
+import React, {useContext, useEffect, useState} from "react";
+import { useDispatch } from 'react-redux';
+import { getIntroduction , getCompanies, getProject, getHobbies, getPublications} from '../../Redux/Features/information';
+import { getProjectList } from '../../Redux/Features/portfolio';
+import { unwrapResult } from '@reduxjs/toolkit';
 import { DashboardContext } from "../../Contexts/DashboardContext";
+import toast, {Toaster} from 'react-hot-toast';
+import { decodeToken, isExpired } from "react-jwt";
 
-const { TextArea } = Input;
-const data = "Hi there, This is Abhradip Ghosh, an experienced Software Developer adept in bringing forth expertise in design, architect, develop, testing and maintenance of software systems. I am equipped with a diverse and promising skill-set. Specialized on MERN stack with experience of more than 6 years on the same domain. I am also having the working experience of Ruby on Rails domain and related tech stack. I have the proficiency in various platforms, languages, and embedded systems.";
+import IntroductionEditionArea from "../EditionArea/IntroductionEditionArea/IntroductionEditionArea";
+import CompaniesEditionArea from "../EditionArea/CompaniesEditionArea/CompaniesEditionArea";
+import ProjectsEditionArea from "../EditionArea/ProjectsEditionArea/ProjectsEditionArea";
+import HobbiesEditionArea from "../EditionArea/HobbiesEditionArea/HobbiesEditionArea";
+import PublicationsEditionArea from "../EditionArea/PublicationsEditionArea/PublicationsEditionArea";
+import PortfolioEditionArea from "../EditionArea/PortfolioEditionArea/PortfolioEditionArea";
+
 
 const DashboardBody = () => {
-    const { activeMenuItem } = useContext(DashboardContext);
+    const [introductionContent, setIntroductionContent] = useState(null);
+    const [projectContent, setProjectContent] = useState(null);
+    const [companyContent, setCompanyContent] = useState(null);
+    const [portfolioContent, setPortfolioContent] = useState(null);
+    const [publicationContent, setPublicationContent] = useState(null);
+    const [hobbiesContent, setHobbiesContent] = useState(null);
+
+    const token = localStorage.getItem("jwt");
+    const decodedToken = decodeToken(token);
+    const isMyTokenExpired = isExpired(token);
+    const { activeMenuItem , handleLogout } = useContext(DashboardContext);
+    const dispatch = useDispatch();
+
+
+    useEffect(()=>{
+
+        if(decodedToken && decodedToken?.user === localStorage.getItem("user")){
+            if(!isMyTokenExpired){
+                switch(activeMenuItem.value){
+                    case 'Introduction':
+                        dispatch(getIntroduction())
+                        .then(unwrapResult)
+                        .then((result)=>{
+                            setIntroductionContent(result?.data?.data?.description?.data);
+                        })
+                        .catch((e)=> {
+                            toast.error('Something went wrong')
+                        })
+                        break;
+                    case 'Projects':
+                        dispatch(getProject())
+                        .then(unwrapResult)
+                        .then((result)=>{
+                            setProjectContent(result?.data?.data?.description?.data);
+
+                        })
+                        .catch((e)=> {
+                            toast.error('Something went wrong')
+                        })
+                        break;
+                    case 'Companies':
+                        dispatch(getCompanies())
+                        .then(unwrapResult)
+                        .then((result)=>{
+                            setCompanyContent(result?.data?.data?.description);
+                        })
+                        .catch((e)=> {
+                            toast.error('Something went wrong')
+                        })
+                        break;
+                    case 'Portfolio':
+                        dispatch(getProjectList())
+                        .then(unwrapResult)
+                        .then((result)=>{
+                            setPortfolioContent(result?.data?.data);
+                        })
+                        .catch((e)=> {
+                            toast.error('Something went wrong')
+                        })
+                        break;
+                    case 'Publications':
+                        dispatch(getPublications())
+                        .then(unwrapResult)
+                        .then((result)=>{
+                            setPublicationContent(result?.data?.data?.description);
+                        })
+                        .catch((e)=> {
+                            toast.error('Something went wrong')
+                        })
+                        break;
+                    case 'Hobbies':
+                        dispatch(getHobbies())
+                        .then(unwrapResult)
+                        .then((result)=>{
+                            setHobbiesContent(result?.data?.data)
+                        })
+                        .catch((e)=> {
+                            toast.error('Something went wrong')
+                        })
+                        break;
+
+                }
+            }else{
+                handleLogout();
+                toast.success('Logged out successfully.');
+            }
+        }else{
+            handleLogout();
+            toast.success('Logged out successfully.');
+        }
+    },[activeMenuItem])
 
     return (
         <>
-            <div className="bg-white ml-4 mr-4 h-auto drop-shadow-lg flex flex-col">
+             <Toaster
+                position="top-right"
+                reverseOrder={false}
+            />
+            <div className="bg-white h-[71vh] ml-4 mr-4 drop-shadow-lg flex flex-col overflow-y-scroll">
                 <div className="flex p-4 w-full">
                     <span>
                         <p className="body-font font-josefin-sans text-2xl" style={{color: "#1677ff"}}>Content Management - {activeMenuItem?.value}</p>
                     </span>
                 </div>
-                <div className="flex w-full">
-                    <div className="flex w-6/12 justify-center items-center p-4">
-                        <Card type="inner" title="Content Editor" style={{fontFamily: "Josefin Sans"}}>
-                           <span>
-                                <p className="pb-2">
-                                    Please update the following section in order to reflect the changes in website
-                                </p>
-                           </span>
-                            <TextArea
-                                showCount
-                                value={data}
-                                maxLength={100}
-                                style={{
-                                    height: 120,
-                                    marginBottom: 24,
-                                }}
-                            placeholder="can resize"
-                            />
+                {
+                    activeMenuItem?.value === 'Introduction'?
+                        <IntroductionEditionArea content={introductionContent}/>
+                    :
+                    activeMenuItem?.value === 'Companies'?
+                        <CompaniesEditionArea content={companyContent}/>
+                    :
+                    activeMenuItem.value === 'Projects'?
+                        <ProjectsEditionArea content={projectContent}/>
+                    :
+                    activeMenuItem.value === 'Portfolio'?
+                        <PortfolioEditionArea content={portfolioContent}/>
+                    :
+                    activeMenuItem.value === 'Publications'?
+                        <PublicationsEditionArea content={publicationContent}/>
+                    :
+                    activeMenuItem.value === 'Hobbies'?
+                        <HobbiesEditionArea content={hobbiesContent}/>
+                    :
+                    null
 
-                            <Button type="primary" className="body-font font-josefin-sans bg-blue-500 hover:bg-blue-500">Save</Button>
-                        </Card>
-                    </div>
-
-                    <div className="flex w-6/12 justify-center items-center p-4">
-                        <Card type="inner" title="Current Data" style={{fontFamily: "Josefin Sans"}}>
-                            {data}
-                        </Card>
-                    </div>
-                </div>
+                }
             </div>
         </>
     )

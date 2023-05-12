@@ -1,6 +1,7 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import { userLogin } from '../../Api/Login';
 
+
 const intialStateValue = {
     isLoading: false,
     isError: false,
@@ -15,7 +16,6 @@ export const doLogin = createAsyncThunk("doLogin", async (payload) => {
         throw(err)
     }
 })
-
 
 export const userSlice = createSlice({
     name: "user",
