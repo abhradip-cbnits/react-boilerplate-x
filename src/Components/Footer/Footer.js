@@ -8,7 +8,7 @@ const text = <span>This site is developed using React, Ant Design & Tailwind CSS
 
 const Footer = () => {
     return(
-        <footer className="bg-gray-600 text-xs text-center p-6 bottom-0 w-full body-font font-ubuntu">
+        <footer className="bg-gray-600 text-xs absolute text-center p-6 bottom-0 w-full body-font font-ubuntu">
             <div className="flex flex-row w-full">
                 <div className="w-full flex flex-row justify-start items-center">
                     <p className={styles.footer_text}>Copyright © 2023, All Right Reserved</p>

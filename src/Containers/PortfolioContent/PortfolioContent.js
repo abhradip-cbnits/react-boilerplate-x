@@ -1,9 +1,10 @@
 import React from "react";
-import ProjectList from "../../Components/ProjectList/ProjectList";
 
 const PortfolioContent = () => {
     return (
-       <ProjectList/>
+       <>
+        <h1>This is portfolio page...</h1>
+       </>
     )
 
 }
