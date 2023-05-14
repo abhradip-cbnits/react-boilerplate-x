@@ -2,10 +2,10 @@ import React from "react";
 import {Input} from 'antd';
 
 
-const DynamicInputField = () => {
+const DynamicInputField = (props) => {
     return(
         <>
-            <Input placeholder="Add Responsibility" className="mb-2"/>
+            <Input placeholder={props.placeholder} className="mb-2"/>
         </>
     )
 }

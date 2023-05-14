@@ -39,7 +39,7 @@ const DashboardBody = () => {
                         dispatch(getIntroduction())
                         .then(unwrapResult)
                         .then((result)=>{
-                            setIntroductionContent(result?.data?.data?.description?.data);
+                            setIntroductionContent(result?.data?.data);
                         })
                         .catch((e)=> {
                             toast.error('Something went wrong')
@@ -49,7 +49,7 @@ const DashboardBody = () => {
                         dispatch(getProject())
                         .then(unwrapResult)
                         .then((result)=>{
-                            setProjectContent(result?.data?.data?.description?.data);
+                            setProjectContent(result?.data?.data);
 
                         })
                         .catch((e)=> {
@@ -60,7 +60,7 @@ const DashboardBody = () => {
                         dispatch(getCompanies())
                         .then(unwrapResult)
                         .then((result)=>{
-                            setCompanyContent(result?.data?.data?.description);
+                            setCompanyContent(result?.data?.data);
                         })
                         .catch((e)=> {
                             toast.error('Something went wrong')

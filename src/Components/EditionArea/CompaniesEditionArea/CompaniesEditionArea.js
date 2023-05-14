@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col, Input, Card, Button, Drawer, Space, Switch} from "antd";
+import { useDispatch } from 'react-redux';
+import { modifyCompanies } from "../../../Redux/Features/information";
+import { unwrapResult } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 
 const CompaniesEditionArea = (props) => {
 
+    const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
     const [companyList, setCompanyList] = useState([]);
+    const [companiesId, setCompaniesId] = useState(null);
+    const [mutableCompanyName, setMutableCompanyName] = useState("");
+    const [mutableCompanyRole, setMutableCompanyRole] = useState("");
+    const [mutableCompanyStint, setMutableCompanyStint] = useState("");
+
 
     const openDrawer = () => {
         setOpen(true);
@@ -14,9 +24,57 @@ const CompaniesEditionArea = (props) => {
         setOpen(false);
     }
 
+    const handleInputChange = (event, type) => {
+        if (type === "companyName"){
+            setMutableCompanyName(event.target.value);
+        }else if (type === "companyRole"){
+            setMutableCompanyRole(event.target.value);
+        }else if (type === "companyStint"){
+            setMutableCompanyStint(event.target.value);
+        }
+    }
+
+    const addCompany = (event) => {
+        event.preventDefault();
+        if (mutableCompanyName && mutableCompanyRole && mutableCompanyStint){
+            const newCompany = {
+                companyName : mutableCompanyName,
+                role : mutableCompanyRole,
+                stint : mutableCompanyStint,
+                show : true
+            }
+            const companyAll = [...companyList];
+            companyAll.unshift(newCompany);
+
+            const payload = {
+                id: companiesId,
+                data : {
+                    description : companyAll
+                }
+            }
+
+            dispatch(modifyCompanies(payload))
+            .then((unwrapResult))
+            .then((result) => {
+                closeDrawer();
+                setMutableCompanyName("");
+                setMutableCompanyRole("");
+                setMutableCompanyStint("");
+                setCompanyList([...companyAll]);
+                toast.success(result?.data?.message);
+            })
+            .catch((err) => {
+                toast.error("Something went wrong");
+            })
+        }else{
+            toast.error("Please fillup the details");
+        }
+    }
+
     useEffect(() => {
-        if (props?.content?.length){
-            setCompanyList([...props.content])
+        if (props?.content?.description?.length){
+            setCompanyList([...props.content?.description]);
+            setCompaniesId(props?.content?._id);
         }
     }, [props])
 
@@ -56,7 +114,7 @@ const CompaniesEditionArea = (props) => {
                 open={open}
                 extra={
                     <Space>
-                      <Button type="primary" className="body-font font-josefin-sans bg-blue-500 hover:bg-blue-500">
+                      <Button onClick={(e) => addCompany(e)} type="primary" className="body-font font-josefin-sans bg-blue-500 hover:bg-blue-500">
                         Submit
                       </Button>
                     </Space>
@@ -65,17 +123,17 @@ const CompaniesEditionArea = (props) => {
                <Row>
                     <Col span={24} className="flex flex-col mb-4">
                         <label className="block text-sm font-medium leading-6 text-gray-900 body-font font-josefin-sans">Company Name</label>
-                        <Input placeholder="Company Name" />
+                        <Input onChange={(e)=> handleInputChange(e, "companyName")} value={mutableCompanyName} placeholder="Company Name" />
                     </Col>
 
                     <Col span={24} className="flex flex-col mb-4">
                         <label className="block text-sm font-medium leading-6 text-gray-900 body-font font-josefin-sans">Role</label>
-                        <Input placeholder="Role" />
+                        <Input onChange={(e)=> handleInputChange(e, "companyRole")} value={mutableCompanyRole} placeholder="Role" />
                     </Col>
 
                     <Col span={24} className="flex flex-col mb-4">
                         <label className="block text-sm font-medium leading-6 text-gray-900 body-font font-josefin-sans">Stint</label>
-                        <Input placeholder="Stint" />
+                        <Input onChange={(e)=> handleInputChange(e, "companyStint")} value={mutableCompanyStint} placeholder="Stint" />
                     </Col>
                </Row>
             </Drawer>

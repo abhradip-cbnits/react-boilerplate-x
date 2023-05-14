@@ -2,14 +2,15 @@ import React, {useState, useEffect} from "react";
 import { Card, Button, Drawer, Input, Row, Col, Space } from "antd";
 import DynamicInputField from '../../DynamicInputField/DynamicInputField';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faMinusSquare, faPlusSquare} from '@fortawesome/free-solid-svg-icons'
+import {faMinusSquare, faPlusSquare} from '@fortawesome/free-solid-svg-icons';
+import toast from 'react-hot-toast';
 
 const { TextArea } = Input;
 
 const PortfolioEditionArea = (props) => {
 
     const [projectList, setProjectList] = useState([]);
-    const [responsibilityInput, setResponsibilityInput] = useState([<DynamicInputField/>])
+    const [responsibilityInput, setResponsibilityInput] = useState([<DynamicInputField placeholder="Add Responsibility"/>])
     const [open, setOpen] = useState(false);
 
     const openDrawer = () => {
@@ -22,12 +23,18 @@ const PortfolioEditionArea = (props) => {
 
     const addInput = (event) => {
         event.preventDefault();
-        setResponsibilityInput([...responsibilityInput,<DynamicInputField />])
+        setResponsibilityInput([...responsibilityInput,<DynamicInputField placeholder="Add Responsibility"/>])
     }
 
     const removeInput = (event) => {
         event.preventDefault();
-
+        const last_index = responsibilityInput.length - 1;
+        if (last_index > 0){
+            responsibilityInput.splice(-1);
+            setResponsibilityInput([...responsibilityInput]);
+        }else{
+            toast.error('Atleast one responsibility is required');
+        }
     }
 
     useEffect(()=> {
@@ -54,9 +61,9 @@ const PortfolioEditionArea = (props) => {
                                     <p className="body-font font-josefin-sans text-xs mb-4"> {item?.description}</p>
                                     <p className="body-font font-josefin-sans text-base">Responsibilities</p>
                                     {
-                                        item?.responsibilities && item?.responsibilities.map((responsibility, i)=> {
-                                            <p className="body-font font-josefin-sans text-xs"> {responsibility}</p>
-                                        })
+                                        item?.responsibilities && item?.responsibilities.map((responsibility, i)=> (
+                                            <p className="body-font font-josefin-sans text-xs mb-1"> {responsibility}</p>
+                                        ))
                                     }
                                 </Card>
                             </div>
